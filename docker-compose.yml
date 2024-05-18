@@ -7,12 +7,6 @@ services:
     depends_on:
       - unbound
     restart: unless-stopped
-    deploy:
-      resources: # <- these settings are optional, but can help to limit resource reservations
-        limits:
-          memory: 768M
-        reservations:
-          memory: 256M
     ports:
       - "8080:80/tcp" # web ui -> http://localhost:8080/admin
       - "53:53/tcp" # DNS tcp port is used as fallback for longer dns messages
