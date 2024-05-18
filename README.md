@@ -1,4 +1,4 @@
-# Pi-hole & Unbound DNS Docker Setup
+# Pi-hole & Unbound DNS Docker Setup for Raspberry Pi
 
 This is a docker compose setup which starts a [Pi-hole](https://pi-hole.net/) and [nlnetlab's Unbound](https://nlnetlabs.nl/projects/unbound/about/) as upstream recursive DNS using official (or ready-to-use) images. The main idea here is to add security, [privacy](https://www.cloudflare.com/learning/dns/what-is-recursive-dns/) and have ad and malware protection, everything hosted locally.
 
