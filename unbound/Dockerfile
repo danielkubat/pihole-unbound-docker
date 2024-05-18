@@ -1,3 +1,3 @@
-FROM mvance/unbound:1.17.1
+FROM mvance/unbound-rpi:1.19.2
 
 COPY conf /opt/unbound/etc/unbound/
