@@ -1,4 +1,4 @@
-# Pi-hole & Unbound DNS Docker Setup for Raspberry Pi
+# Pi-hole & Unbound Docker setup for Raspberry Pi
 
 This is a docker compose setup which starts a [Pi-hole](https://pi-hole.net/) and [nlnetlab's Unbound](https://nlnetlabs.nl/projects/unbound/about/) as upstream recursive DNS using official (or ready-to-use) images. The main idea here is to add security, [privacy](https://www.cloudflare.com/learning/dns/what-is-recursive-dns/) and have ad and malware protection, everything hosted locally.
 
@@ -130,7 +130,7 @@ In the `docker-compose.yml` change the used Pi-hole version by changing
 services:
   Pi-hole:
     container_name: ...
-    image: Pi-hole/Pi-hole:2023.03.1 # <- update image version here, see: https://github.com/pi-hole/docker-pi-hole/releases
+    image: Pi-hole/Pi-hole:2024.05.0 # <- update image version here, see: https://github.com/pi-hole/docker-pi-hole/releases
     hostname: ...
 ```
 
@@ -138,7 +138,7 @@ and Unbound by changing the `FROM` in `./unbound/Dockerfile`
 
 ```dockerfile
 # Update the version here, I use the docker build from https://github.com/MatthewVance/unbound-docker
-FROM mvance/unbound:1.17.1
+FROM mvance/unbound-rpi:1.19.2
 ...
 ```
 
@@ -168,7 +168,7 @@ If you want to fine-tune the Unbound configuration, you can add the file `./unbo
 Currently, this setup will only support platform type `amd64`, that means it will not run on machines that e.g. have an [ARM architecture](https://en.wikipedia.org/wiki/ARM_architecture_family) like the [Raspberry Pi](https://www.raspberrypi.com/documentation/computers/processors.html). While the official Pi-hole image supports [multi-arch](https://www.docker.com/blog/multi-arch-build-and-images-the-simple-way/), MatthewVance's unbound image does not. There is, however, a solution: there is a specific build for `arm/v7` which can be found on [Docker hub](https://hub.docker.com/r/mvance/unbound-rpi/tags). Just update the `Dockerfile` in `./unbound/Dockerfile`:
 
 ```dockerfile
-FROM mvance/unbound-rpi:1.17.1
+FROM mvance/unbound-rpi:1.19.2
 ...
 ```
 
