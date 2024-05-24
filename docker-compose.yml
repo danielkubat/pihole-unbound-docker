@@ -6,7 +6,7 @@ services:
     hostname: pihole.local
     depends_on:
       - unbound
-    restart: unless-stopped
+    restart: always
     ports:
       - "8080:80/tcp" # web ui -> http://localhost:8080/admin
       - "53:53/tcp" # DNS tcp port is used as fallback for longer dns messages
@@ -33,7 +33,7 @@ services:
     build: ./unbound
     container_name: unbound
     hostname: unbound.local
-    restart: unless-stopped
+    restart: always
     ports:
       - "5335:53/tcp" # expose a different port (5335) so you can use it directly
       - "5335:53/udp"
